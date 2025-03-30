@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cccoujb8pbti6"]
+
+[ext_resource type="Script" uid="uid://d275jn4o7rbrn" path="res://entities/origin/origin.gd" id="1_c0nbp"]
+[ext_resource type="Texture2D" uid="uid://cadwf33fc2r4p" path="res://assets/tiles/origin.tres" id="2_gkeu7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7arx4"]
+
+[node name="Origin" type="Node2D"]
+script = ExtResource("1_c0nbp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(8, 8)
+texture = ExtResource("2_gkeu7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(6.4, 6.4)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_7arx4")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -150)

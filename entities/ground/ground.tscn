@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqfoknqcux8i4"]
+
+[ext_resource type="Script" uid="uid://df408fvy4wcfa" path="res://entities/ground/ground.gd" id="1_fqlxp"]
+[ext_resource type="Texture2D" uid="uid://cvjny3d0uqa8o" path="res://assets/tiles/ground.tres" id="2_wds0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7arx4"]
+
+[node name="Ground" type="Node2D"]
+z_index = 4
+script = ExtResource("1_fqlxp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(8, 8)
+texture = ExtResource("2_wds0k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(6.4, 6.4)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_7arx4")

@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5ryjis84k71n"]
+
+[ext_resource type="Script" uid="uid://2rx52s36w868" path="res://entities/destination/destination.gd" id="1_qbcoi"]
+[ext_resource type="Texture2D" uid="uid://cffm3md2vg8wo" path="res://assets/tiles/destination.tres" id="2_xcdes"]
+[ext_resource type="Texture2D" uid="uid://i0lcypy8ly1e" path="res://assets/tiles/color_block.tres" id="3_xcdes"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08mi2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcdes"]
+
+[sub_resource type="GDScript" id="GDScript_xcdes"]
+script/source = "extends Node
+class_name PullLeftArea
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_2psb1"]
+script/source = "extends Node
+class_name DoubleJumpArea
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_yvjqi"]
+script/source = "extends Node
+class_name BounceArea
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_5jnas"]
+script/source = "extends Node
+class_name PushRightArea
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Destination" type="Node2D"]
+script = ExtResource("1_qbcoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -65)
+scale = Vector2(8, 8)
+texture = ExtResource("2_xcdes")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -65)
+scale = Vector2(6.4, 6.4)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_08mi2")
+
+[node name="Flag" type="CanvasGroup" parent="."]
+
+[node name="Flag" type="Sprite2D" parent="Flag"]
+self_modulate = Color(1, 0, 0, 1)
+position = Vector2(29, -236)
+scale = Vector2(3.64, 2.4)
+texture = ExtResource("3_xcdes")
+
+[node name="Stick" type="Sprite2D" parent="Flag"]
+position = Vector2(0, -192)
+scale = Vector2(0.32, 8)
+texture = ExtResource("3_xcdes")
+
+[node name="Area2D" type="Area2D" parent="Flag"]
+position = Vector2(0, -192)
+scale = Vector2(1, 6.4)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag/Area2D"]
+shape = SubResource("RectangleShape2D_xcdes")
+
+[node name="PullLeftArea" type="Node" parent="."]
+script = SubResource("GDScript_xcdes")
+
+[node name="DoubleJumpArea" type="Node" parent="."]
+script = SubResource("GDScript_2psb1")
+
+[node name="BounceArea" type="Node" parent="."]
+script = SubResource("GDScript_yvjqi")
+
+[node name="PushRightArea" type="Node" parent="."]
+script = SubResource("GDScript_5jnas")
+
+[connection signal="body_entered" from="Flag/Area2D" to="." method="on_player_enter"]

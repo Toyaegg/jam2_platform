@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv5f4g5ecbg0i"]
+
+[ext_resource type="Script" uid="uid://b14i1n7lls8nu" path="res://levels/level.gd" id="1_pqqg8"]
+[ext_resource type="Script" uid="uid://bb53wb50lk2ww" path="res://levels/level_manager.gd" id="2_0srwa"]
+[ext_resource type="Texture2D" uid="uid://cwxluq7yo61ss" path="res://assets/background/1743309531112.png" id="2_ep78u"]
+[ext_resource type="PackedScene" uid="uid://b5ryjis84k71n" path="res://entities/destination/destination.tscn" id="3_ilhis"]
+[ext_resource type="PackedScene" uid="uid://cccoujb8pbti6" path="res://entities/origin/origin.tscn" id="4_ep78u"]
+[ext_resource type="PackedScene" uid="uid://dl7bs86naqbti" path="res://entities/platform/platform.tscn" id="5_dfjjl"]
+[ext_resource type="PackedScene" uid="uid://bwec8xf3u1886" path="res://entities/dead_zone/dead_zone.tscn" id="6_at1ld"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_pqqg8")
+next_level = "level_3"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 0)
+texture = ExtResource("2_ep78u")
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("2_0srwa")
+metadata/_custom_type_script = "uid://bb53wb50lk2ww"
+
+[node name="Destination" parent="." instance=ExtResource("3_ilhis")]
+position = Vector2(787, 738)
+
+[node name="Origin" parent="." instance=ExtResource("4_ep78u")]
+position = Vector2(0, 739)
+
+[node name="Platform" parent="." instance=ExtResource("5_dfjjl")]
+position = Vector2(277, 216)
+
+[node name="DeadZone" parent="." instance=ExtResource("6_at1ld")]
+position = Vector2(0, 1080)
